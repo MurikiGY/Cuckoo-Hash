@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+#define m 11
 
 
 int main (){
