@@ -2,13 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define m 11
+#include "hash.h"
+
 #define LINESIZE 10
 
 int main (){
-    char linha[LINESIZE];   /* string com operacao e valor  */
-    char oper[5];           /* tipo de operacao             */
-    int valor;              /* Valor da operacao            */
+    char    linha[LINESIZE];    /* string com operacao e valor  */
+    char    oper[5];            /* tipo de operacao             */
+    int     valor;              /* Valor da operacao            */
+    hash_t  T1[m];              /* Vetor de tabela 1            */
+    hash_t  T2[m];              /* Vetor de tabela 2            */
 
     fgets(linha, LINESIZE, stdin);
     while(linha[0] != '\n'){
@@ -17,9 +20,11 @@ int main (){
         valor = atoi(strtok(NULL, "\n"));
 
         if (!strcmp(oper, "i"))
-            insere_hash();
+            insere_hash(T1, T2, valor);
+
         else if (!strcmp(oper, "r"))
-            remove_hash();
+            remove_hash(T1, T2, valor);
+
         else
             fprintf(stderr, "Operacao invalida\n");
 
@@ -27,7 +32,7 @@ int main (){
         fgets(linha, LINESIZE, stdin);
     }
 
-    imprime_hash();
+    imprime_hash(T1, T2);
 
     return 0;
 }
