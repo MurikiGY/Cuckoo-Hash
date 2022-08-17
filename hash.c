@@ -5,39 +5,43 @@
 
 #include "hash.h"
 
+/* OK */
 int hash1(int k){
     return k % m;
 }
 
+/* OK */
 int hash2(){
     return floor(m*(k*0.9 - floor(k*0.9)));
 }
 
+
+/* OK */
 void insere_hash(hash_t T1[], int T2[], int k){
     int index = hash1(k);
 
-    if (T1[index]->status == VAZIO || T1[index]->status == EXCLUIDO){
-        T1[index] = k;
+    if (T1[index]->status != CHEIO)
+    {
+        T1[index]->chave = k;
         T1[index]->status = CHEIO;
     }
-    else if (T1[index] != k){
-        T2[hash2(T1[index])] = T1[index];   /* Copia de T1 para T2 */
-        T1[index] = k;
+    else if (T1[index]->chave != k)
+    {
+        int i = hash2(T1[index]->chave);
+        T2[i]->chave = T1[index]->chave;   /* Copia de T1 para T2 */
+        T2[i]->status = CHEIO;
+        T1[index]->chave = k;
     }
-
 }
+
 
 void remove_hash(int T1[], int T2[], int k){
     int index = hash2(k);
 
-    if (T2[index] == k)
-        T2[index] = NULL;
-
+    /* Busca em T2 */
+    if (T2[index]->chave == k)
+        T2[index]->status = EXCLUIDO;
     else {
-        
-        index = hash1(k);
-
-        if (T1[index] == k)
 
 }
 
