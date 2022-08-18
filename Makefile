@@ -1,16 +1,27 @@
 CC = gcc
-CFGLAGS = -Wall -g -std=c99
+CCFLAGS = -Wall -g -std=c99     #Flags de compilação
+LDFLAGS = -lm                   #Blibliotecas a ligar
+SOURCES = $(wildcard *.c)       #Arquivos .c
+OBJECTS = $(SOURCES: .c=.o)     #Arquivos .o
+TARGET	= myht                  #Executavel
 
-objects = myht.o
+#Regra default (primeira regra)
+all: $(TARGET)
 
-all: myht
 
-myht: $(objects)
+$(TARGET): $(OBJECTS)
+		$(CC) -o $@ $^ $(LDFLAGS)
 
-myht.o: myht.c
+%.o: %.c %.h
+		$(CC) $(CCFLAGS) -c $<
 
+%.o: %.c
+		$(CC) $(CCFLAGS) -c $<
+
+#Remove arquivos temporarios
 clean:
-	rm -f $(objects)
+	rm -f *~ *.o
 
+#Remove o que não for o codigo fonte original
 purge:
-	rm myht
+	rm $(TARGET)
