@@ -58,10 +58,17 @@ int busca_hash(int T1[], int T2[], int k){
 
 
 void imprime_hash(int T1[], int T2[]){
+    int i;
 
+    /* Impressão de T2 */
+    for (i=0; i<M ;i++)
+        if (T2[i]->status == CHEIO)
+            fprintf(stdout,"%d,T2,%d\n",T2[i]->chave, i);
 
-
-
+    /* Impressão de T1 */
+    for (i=0; i<M ;i++)
+        if (T1[i]->status == CHEIO)
+            fprintf(stdout,"%d,T1,%d\n",T1[i]->chave, i);
 }
 
 void zera_hash(hash_t T){
