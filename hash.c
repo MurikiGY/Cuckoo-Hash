@@ -34,7 +34,7 @@ void insere_hash(hash_t T1[], hash_t T2[], int k){
     }
 }
 
-
+//OK
 void remove_hash(hash_t T1[], hash_t T2[], int k){
     int index = hash2(k);
 
