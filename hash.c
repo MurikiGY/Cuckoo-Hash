@@ -42,14 +42,23 @@ void remove_hash(int T1[], int T2[], int k){
     if (T2[index]->chave == k)
         T2[index]->status = EXCLUIDO;
     else {
-
+        /* Busca em T1 */
+        index = hash1(k);
+        if (T1[index]->chave == k)
+            T1[index]->status = EXCLUIDO;
+    }
 }
 
-int busca_hash(int T1[], int T2[], int k){
+void busca_hash(int T1[], int T2[], int k, int *T, int *pos){
     int index = hash1(k);
 
-    if (T1[index] != k)
-        return NULL;
+    /* Testa T1 vazio */
+    if (T1[index]->status == VAZIO){
+        T = 0;
+        pos = -1;
+
+    } else if (T1[index]->status == CHEIO){
+
     
         
 
