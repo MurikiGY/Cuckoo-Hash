@@ -49,21 +49,29 @@ void remove_hash(hash_t T1[], hash_t T2[], int k){
     }
 }
 
-//void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos){
-//    int index = hash1(k);
-//
-//    /* Testa T1 vazio */
-//    if (T1[index].status == VAZIO){
-//        *T = 0;
-//        *pos = -1;
-//
-//    } else if (T1[index].status == CHEIO){
-//
-//    
-//        
-//
-//
-//}
+void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos){
+    int index = hash1(k);
+
+    /* Testa T1 vazio */
+    if (T1[index].status == VAZIO){
+        *T = 0;
+        *pos = -1;
+
+    } else if (T1[index].status == CHEIO && T1[index].chave == k){
+        *T = 1;
+        *pos = index;
+    } else {
+        index = hash2(k);
+        if (T2[index].status == CHEIO && T2[index].chave == k){
+            *T = 2;
+            *pos = index;
+        } else {
+            *T = 0;
+            *pos = -1;
+        }
+    }
+
+}
 
 
 void imprime_hash(hash_t T1[], hash_t T2[]){

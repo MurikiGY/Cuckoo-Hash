@@ -13,18 +13,19 @@ int main (){
     hash_t  T1[M];              // Vetor de tabela 1
     hash_t  T2[M];              // Vetor de tabela 2
 
+    int T;
+    int pos;
+
     /* Configura status das tabelas como vazio */
     zera_hash(T1);
     zera_hash(T2);
 
-
-    fscanf(stdin, "%c %d", &oper, &valor);
-
 //    fgets(linha, LINESIZE, stdin);
-    while(oper != '\n'){
+
+    while(scanf("%c %d", &oper, &valor) != EOF){
 
 //        strncpy(oper, strtok(linha, " "), strlen(linha));
-//        valor = atoi(strtok(NULL, "\n"));
+//        valor = atoi(strtok(NULL, "\n"));)
 
         if (oper == 'i')
             insere_hash(T1, T2, valor);
@@ -35,8 +36,15 @@ int main (){
         else
             fprintf(stderr, "Operacao invalida\n");
 
-        linha[0] = '\n';
-        fgets(linha, LINESIZE, stdin);
+        getchar();
+
+        busca_hash(T1, T2, valor, &T, &pos);
+        if (T)
+            printf("O valor %d esta na tabela %d na posicao %d\n", valor, T, pos);
+        
+
+//        linha[0] = '\n';
+//        fgets(linha, LINESIZE, stdin);
     }
 
     imprime_hash(T1, T2);
