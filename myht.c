@@ -11,7 +11,7 @@ int main (){
     char    oper[5];            /* tipo de operacao             */
     int     valor;              /* Valor da operacao            */
     hash_t  T1[M];              /* Vetor de tabela 1            */
-    hash_t  T2[M];                 /* Vetor de tabela 2            */
+    hash_t  T2[M];              /* Vetor de tabela 2            */
 
     /* Configura status das tabelas como vazio */
     zera_hash(T1);

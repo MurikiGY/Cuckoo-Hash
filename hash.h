@@ -6,10 +6,11 @@
 #define EXCLUIDO 1
 #define CHEIO 2
 
-typedef struct hash {
+struct hash {
     int chave;
     int status;
-} hash_t;
+};
+typedef struct hash hash_t;
 
 /* Status:
  * 0 - Posição vazia e nao excluido
@@ -21,10 +22,10 @@ void insere_hash(hash_t T1[], hash_t T2[], int k);
 
 void remove_hash(hash_t T1[], hash_t T2[], int k);
 
-void busca_hash(hash_t T1[], hash_t T2[], int k, int &T, int &pos);
+void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos);
 
 void imprime_hash(hash_t T1[], hash_t T2[]);
 
-void zera_hash(hash_t T);
+void zera_hash(hash_t T[]);
 
 #endif
