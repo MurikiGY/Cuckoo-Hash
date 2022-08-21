@@ -4,10 +4,7 @@
 
 #include "hash.h"
 
-#define LINESIZE 10
-
 int main (){
-    char    linha[LINESIZE];    // string com operacao e valor
     char    oper;               // tipo de operacao
     int     valor;              // Valor da operacao
     hash_t  T1[M];              // Vetor de tabela 1
