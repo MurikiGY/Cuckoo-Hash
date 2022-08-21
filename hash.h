@@ -22,6 +22,8 @@ void insere_hash(hash_t T1[], hash_t T2[], int k);
 
 void remove_hash(hash_t T1[], hash_t T2[], int k);
 
+void remove_hash_busca(hash_t T1[], hash_t T2[], int k);
+
 void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos);
 
 void imprime_hash(hash_t T1[], hash_t T2[]);

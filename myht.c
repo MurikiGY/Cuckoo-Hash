@@ -16,35 +16,31 @@ int main (){
     int T;
     int pos;
 
-    /* Configura status das tabelas como vazio */
+    // Configura status das tabelas como vazio
     zera_hash(T1);
     zera_hash(T2);
-
-//    fgets(linha, LINESIZE, stdin);
-
+    
     while(scanf("%c %d", &oper, &valor) != EOF){
-
-//        strncpy(oper, strtok(linha, " "), strlen(linha));
-//        valor = atoi(strtok(NULL, "\n"));)
 
         if (oper == 'i')
             insere_hash(T1, T2, valor);
 
         else if (oper == 'r')
-            remove_hash(T1, T2, valor);
+//            remove_hash(T1, T2, valor);
+            remove_hash_busca(T1, T2, valor);
 
-        else
-            fprintf(stderr, "Operacao invalida\n");
+        else if (oper == 'b'){
+            busca_hash(T1, T2, valor, &T, &pos);
+            if (T)
+                printf("O valor %d esta na tabela %d, posicao %d\n",valor,T,pos);
+            else
+                printf("O valor %d não foi encontrado\n", valor);
+        }
+
+//        else
+//            fprintf(stderr, "Operacao invalida\n");
 
         getchar();
-
-        busca_hash(T1, T2, valor, &T, &pos);
-        if (T)
-            printf("O valor %d esta na tabela %d na posicao %d\n", valor, T, pos);
-        
-
-//        linha[0] = '\n';
-//        fgets(linha, LINESIZE, stdin);
     }
 
     imprime_hash(T1, T2);
@@ -52,7 +48,3 @@ int main (){
     return 0;
 }
 
-/* Implementação:
- * Estrutura de dados: 2 vetores;
- * Operações: inserção, remoção e busca;
- */
