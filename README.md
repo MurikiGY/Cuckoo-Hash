@@ -6,8 +6,15 @@ Data structure:
 - 2 vectors of Hash_t representing tables.
 
 Algorithm:
-The position of the data inside the tables are calculed by two functions, named as hash1 and hash2.
+- The position of the data inside the tables are calculed by two functions, named as hash1 and hash2.
 
-Insertions are always in the table1.
-If already exists an value in its position, then the insertion is in table2.
-Collisions in table2 are not considered.
+Insertions:
+- Are always in the table1.
+- If already exists an value in its position, then the insertion is in table2.
+- Collisions in table2 are not considered.
+
+Search:
+- Returning by parameter T = 0 and pos = -1 if the value doesn't exists, first it is tested if the key in table1 is empty. after that it is tested if the key in the table1 is full AND is equal to it's value. Finally it is tested if the key in the table2 is full AND is equal to it's value.
+
+Remove:
+- There are two implementations of the remove function. One is a normal remove function and the other uses the search function.
