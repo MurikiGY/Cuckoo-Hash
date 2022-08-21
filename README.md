@@ -1,5 +1,5 @@
 # Cuckoo-Hash
-This is a more simple implementation of the Cuckoo-Hash algorithm.
+A more simple implementation of the Cuckoo-Hash algorithm.
 
 Data structure:
 - Hash_t is a struct that has 2 integer variables, one represents the value stored and the other represents the status (empty, stored or excluded).
