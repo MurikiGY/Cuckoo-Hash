@@ -5,6 +5,11 @@
 
 #include "hash.h"
 
+//Função do qsort
+static int cmpstringp(const void *p1, const void *p2){
+    return strcmp(p1, p2);
+}
+
 int hash1(int k){
     return k % M;
 }
@@ -84,17 +89,33 @@ void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos){
 }
 
 void imprime_hash(hash_t T1[], hash_t T2[]){
-    int i;
+    int i, j;
+    print_t dataArr[2*M];
 
-    //Impime T2
+    j = 0;       //Contador do dataArr
+    //Loop de inserção de dados
     for (i=0; i<M ;i++)
-        if (T2[i].status == CHEIO)
-            fprintf(stdout,"%d,T2,%d\n",T2[i].chave, i);
+        if (T1[i].status == CHEIO){
+            dataArr[j].chave = T1[i].chave;
+            dataArr[j].index = i;
+            dataArr[j].table = 1;
+            j++;
+        }
+    for (i=0; i<M ;i++)
+        if (T2[i].status == CHEIO){
+            dataArr[j].chave = T2[i].chave;
+            dataArr[j].index = i;
+            dataArr[j].table = 2;
+            j++;
+        }
 
-    //Impime T1
-    for (i=0; i<M ;i++)
-        if (T1[i].status == CHEIO)
-            fprintf(stdout,"%d,T1,%d\n",T1[i].chave, i);
+    //Ordenação dos dados
+    qsort(dataArr, j, sizeof(print_t), cmpstringp);
+
+    //Impressão dos dados
+    for (i=0; i<j ;i++)
+        printf("%d,T%d,%d\n", dataArr[i].chave, dataArr[i].table, dataArr[i].index);
+
 }
 
 void zera_hash(hash_t T[]){

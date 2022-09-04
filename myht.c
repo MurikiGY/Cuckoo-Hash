@@ -34,9 +34,6 @@ int main (){
                 printf("O valor %d não foi encontrado\n", valor);
         }
 
-//        else
-//            fprintf(stderr, "Operacao invalida\n");
-
         getchar();
     }
 

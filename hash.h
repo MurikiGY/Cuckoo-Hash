@@ -12,6 +12,13 @@ struct hash {
 };
 typedef struct hash hash_t;
 
+struct print {
+    int chave;
+    int index; //Posição na tabela hash
+    int table; //Tabela
+};
+typedef struct print print_t;
+
 /* Status:
  * 0 - Posição vazia e nao excluido
  * 1 - Posição vazia e excluido
