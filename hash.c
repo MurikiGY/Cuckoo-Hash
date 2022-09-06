@@ -19,19 +19,19 @@ int hash2(int k){
 }
 
 void insere_hash(hash_t T1[], hash_t T2[], int k){
-    int index = hash1(k);
+    int index1 = hash1(k);
 
-    if (T1[index].status != CHEIO)
+    if (T1[index1].status != CHEIO)
     {
-        T1[index].chave = k;
-        T1[index].status = CHEIO;
+	T1[index1].chave = k;
+	T1[index1].status = CHEIO;
     }
-    else if (T1[index].chave != k)
+    else if (T1[index1].chave != k)
     {
-        int i = hash2(T1[index].chave);
-        T2[i].chave = T1[index].chave;   //copia de T1 para T2
+        int i = hash2(T1[index1].chave);
+        T2[i].chave = T1[index1].chave;   //copia de T1 para T2
         T2[i].status = CHEIO;
-        T1[index].chave = k;
+        T1[index1].chave = k;
     }
 }
 
