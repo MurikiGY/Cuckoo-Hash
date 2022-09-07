@@ -23,8 +23,7 @@ int main (){
             insere_hash(T1, T2, valor);
 
         else if (oper == 'r')
-//            remove_hash(T1, T2, valor);
-            remove_hash_busca(T1, T2, valor);
+            remove_hash(T1, T2, valor);
 
         else if (oper == 'b'){
             busca_hash(T1, T2, valor, &T, &pos);

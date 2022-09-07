@@ -35,9 +35,9 @@ void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos){
 
     } else {
 
-    //T1 excluido ou cheio e sem a chave
+        //T1 excluido ou cheio e sem a chave
         index = hash2(k);
-    //Testa T2
+        //Testa T2
         if (T2[index].status == CHEIO && T2[index].chave == k){
             *T = 2;
             *pos = index;
@@ -78,37 +78,25 @@ void insere_hash(hash_t T1[], hash_t T2[], int k){
 }
 
 void remove_hash(hash_t T1[], hash_t T2[], int k){
-    int index = hash2(k);
-
-    //Busca em T2
-    if (T2[index].chave == k)
-        T2[index].status = EXCLUIDO;
-    else {
-        //Busca em T1
-        index = hash1(k);
-        if (T1[index].chave == k)
-            T1[index].status = EXCLUIDO;
-    }
-}
-
-void remove_hash_busca(hash_t T1[], hash_t T2[], int k){
 	int T, index;
 
     busca_hash(T1, T2, k, &T, &index);
 
+    //Se encontrou
     if (T)
         if (T == 1)
             T1[index].status = EXCLUIDO;
         else
         if (T == 2)
             T2[index].status = EXCLUIDO;
+
 }
 
 void imprime_hash(hash_t T1[], hash_t T2[]){
     int i, j;
     print_t dataArr[2*M];
 
-    j = 0;       //Contador do dataArr
+    j = 0;  //Contador do dataArr
     //Loop de inserção de dados
     for (i=0; i<M ;i++)
         if (T1[i].status == CHEIO){
