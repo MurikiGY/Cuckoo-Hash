@@ -9,15 +9,15 @@ FIM=10
 OUT="output_valgrind"
 DIFF="output_diff"
 
-make
+make        #Compilação
 
 echo ""
 
 for i in $(seq $INI $FIM)
 do
   echo "resultado teste$i:"
-  ./myht < $FILE$i.in > $FILE$i.sol
-  if $(diff $FILE$i.sol $FILE$i.out > $DIFF);
+  ./myht < $FILE$i.in > $FILE$i.sol             #Execução
+  if $(diff $FILE$i.sol $FILE$i.out > $DIFF);   #Diff
   then
     echo "diff ok"
   else
@@ -28,7 +28,7 @@ do
     cat $DIFF
   fi
 
-  valgrind ./myht < $FILE$i.in > $OUT 2>&1
+  valgrind ./myht < $FILE$i.in > $OUT 2>&1      #Teste de Valgrind
 
   if $(grep -q "ERROR SUMMARY: 0 errors" $OUT);
   then

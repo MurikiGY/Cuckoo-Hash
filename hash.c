@@ -50,31 +50,26 @@ void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos){
 }
 
 void insere_hash(hash_t T1[], hash_t T2[], int k){
-    int T, index;
+    int T, index1, index2;
 
     //Busca chave duplicada
-    busca_hash(T1, T2, k, &T, &index);
+    busca_hash(T1, T2, k, &T, &index1);
 
     //Se não ha chave duplicada
-    if (!T){
-        index = hash1(k);
-        if (T1[index].status != CHEIO){
+    if (T)
+        return;
 
-            T1[index].chave = k;
-            T1[index].status =  CHEIO;
-
-        } else {
-
-            int index2 = hash2(T1[index].chave);
-            if (T2[index2].status != CHEIO){
-
-                T2[index2].chave = T1[index].chave;
-                T2[index2].status = CHEIO;
-                T1[index].chave = k;
-
-            }
-        }
+    //Se não ha chave duplicada
+    index1 = hash1(k);
+    if (T1[index1].status == CHEIO){
+        index2 = hash2(T1[index1].chave);
+        T2[index2].chave = T1[index1].chave;
+        T2[index2].status = CHEIO;
     }
+
+    T1[index1].chave = k;
+    T1[index1].status =  CHEIO;    
+    
 }
 
 void remove_hash(hash_t T1[], hash_t T2[], int k){
