@@ -19,32 +19,27 @@ int hash2(int k){
 }
 
 void busca_hash(hash_t T1[], hash_t T2[], int k, int *T, int *pos){
-    int index = hash1(k);
+    int index1 = hash1(k);
+    int index2 = hash2(k);
 
+    *T = 0;
+    *pos = -1;
+        
     //Testa T1 vazio
-    if (T1[index].status == VAZIO){
+    if (T1[index1].status == VAZIO)
+        return;
 
-        *T = 0;
-        *pos = -1;
-
-       //Testa T1 cheio
-    } else if (T1[index].status == CHEIO && T1[index].chave == k){
+    //Testa T1 cheio
+    if (T1[index1].status == CHEIO && T1[index1].chave == k){
 
         *T = 1;
-        *pos = index;
+        *pos = index1;
 
-    } else {
+    //T1 excluido ou cheio e sem a chave, Testa T2
+    } else if (T2[index2].status == CHEIO && T2[index2].chave == k){
 
-        //T1 excluido ou cheio e sem a chave
-        index = hash2(k);
-        //Testa T2
-        if (T2[index].status == CHEIO && T2[index].chave == k){
-            *T = 2;
-            *pos = index;
-        } else {
-            *T = 0;
-            *pos = -1;
-        }
+        *T = 2;
+        *pos = index2;
 
     }
 }
