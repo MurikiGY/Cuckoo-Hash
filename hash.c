@@ -7,9 +7,7 @@
 
 //Funcao do qsort
 static int compare(const void *p1, const void *p2){
-    int pri = ((print_t *)p1)->chave;
-    int sec = ((print_t *)p2)->chave;
-    return (pri - sec);
+    return (((print_t *)p1)->chave - ((print_t *)p2)->chave);
 }
 
 int hash1(int k){
